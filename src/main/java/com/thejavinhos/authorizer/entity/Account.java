@@ -16,7 +16,8 @@ public class Account {
     @Column(name = "available_limit")
     private double availableLimit;
 
-    private String[] violations;
+//    private String[] violations;
+    private String violation;
 
     public int getId() {
         return id;
@@ -38,12 +39,12 @@ public class Account {
         this.availableLimit = availableLimit;
     }
 
-    public String[] getViolations() {
-        return violations;
+    public String getViolations() {
+        return violation;
     }
 
-    public void setViolations(String[] violations) {
-        this.violations = violations;
+    public void setViolations(String violations) {
+        this.violation = violations;
     }
 
 }
