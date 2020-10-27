@@ -1,6 +1,8 @@
 package com.thejavinhos.authorizer.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Account {
@@ -16,8 +18,8 @@ public class Account {
     @Column(name = "available_limit")
     private double availableLimit;
 
-//    private String[] violations;
-    private String violation;
+    @Column(name = "violations")
+    private ArrayList<String> violations = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -39,12 +41,12 @@ public class Account {
         this.availableLimit = availableLimit;
     }
 
-    public String getViolations() {
-        return violation;
+    public List<String> getViolations() {
+        return violations;
     }
 
     public void setViolations(String violations) {
-        this.violation = violations;
+        this.violations.add(violations);
     }
 
 }
