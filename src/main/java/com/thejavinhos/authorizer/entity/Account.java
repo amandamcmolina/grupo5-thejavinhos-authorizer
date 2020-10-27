@@ -12,6 +12,7 @@ public class Account {
     @Id
     private int id;
 
+    
     @Column(name = "active_card")
     private boolean activeCard;
 
