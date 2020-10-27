@@ -17,7 +17,7 @@ public class Account {
     private double availableLimit;
 
 //    private String[] violations;
-    private String violation;
+    private List violation = new ArrayList();
 
     public int getId() {
         return id;
