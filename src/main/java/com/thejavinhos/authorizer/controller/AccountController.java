@@ -19,7 +19,7 @@ public class AccountController {
     @PostMapping
     public ResponseEntity <String> createAccount(@RequestBody Account account){
         Account accountDefault = accountService.saveAccount(account);
-        return ResponseEntity.ok("{\"account\": {\"active-card\": " + accountDefault.isActiveCard() + ", \"available-active\": " + accountDefault.getAvailableLimit() + "}, \"violations\": [" + accountDefault.getViolations() + "]}");
+        return ResponseEntity.ok("{\"account\": {\"active-card\": " + accountDefault.isActiveCard() + ", \"available-active\": " + accountDefault.getAvailableLimit() + "}, \"violations\": [" + accountDefault.getViolations()[0] + "]}");
     }
 
 }
