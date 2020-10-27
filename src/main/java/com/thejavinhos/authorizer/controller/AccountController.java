@@ -17,8 +17,9 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping
-    public ResponseEntity <Account> createAccount(@RequestBody Account account){
-
-        return ResponseEntity.ok(accountService.saveAccount(account));
+    public ResponseEntity <String> createAccount(@RequestBody Account account){
+        Account accountDefault = accountService.saveAccount(account);
+        return ResponseEntity.ok("{\"account\": {\"active-card\": " + accountDefault.isActiveCard() + ", \"available-active\": " + accountDefault.getAvailableLimit() + "}, \"violations\": [" + accountDefault.getViolations() + "]}");
     }
+
 }

@@ -10,25 +10,16 @@ public class Account {
     @Id
     private int id;
 
-    @Column(name = "cpf")
-    private String cpf;
-
     @Column(name = "active_card")
     private boolean activeCard;
 
     @Column(name = "available_limit")
     private double availableLimit;
 
+    private String[] violations;
+
     public int getId() {
         return id;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public boolean isActiveCard() {
@@ -45,6 +36,14 @@ public class Account {
 
     public void setAvailableLimit(double availableLimit) {
         this.availableLimit = availableLimit;
+    }
+
+    public String[] getViolations() {
+        return violations;
+    }
+
+    public void setViolations(String[] violations) {
+        this.violations = violations;
     }
 
 }
