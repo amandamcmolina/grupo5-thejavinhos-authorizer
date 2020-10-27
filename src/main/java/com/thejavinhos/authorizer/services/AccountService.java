@@ -14,13 +14,16 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    public Account saveAccount(Account account) {
+   public Account saveAccount(Account account) {
         List<Account> accounts = (List<Account>)accountRepository.findAll();
+        List<String> violations =  new ArrayList<>();
         if(accounts.size() >= 1 ){
-            account.setViolations("account-already-initialized");
+            violations.add("account-already-initialized");
+            account.setViolations((ArrayList<String>) violations);
             return account;
         }else{
-            account.setViolations("");
+            violations.add("");
+            account.setViolations((ArrayList<String>) violations);
             return accountRepository.save(account);
         }
     }
