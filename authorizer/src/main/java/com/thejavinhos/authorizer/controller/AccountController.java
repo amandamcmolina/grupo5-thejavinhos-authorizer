@@ -1,7 +1,9 @@
 package com.thejavinhos.authorizer.controller;
 
 import com.thejavinhos.authorizer.entity.Account;
+import com.thejavinhos.authorizer.entity.CreditCard;
 import com.thejavinhos.authorizer.services.AccountService;
+import com.thejavinhos.authorizer.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,11 +17,14 @@ public class AccountController {
 
     @Autowired
     private AccountService accountService;
+    private CardService cardService;
 
     @PostMapping
-    public ResponseEntity <String> createAccount(@RequestBody Account account){
+    public ResponseEntity <String> createAccount(@RequestBody Account account, @RequestBody CreditCard card){
         Account accountDefault = accountService.saveAccount(account);
-        return ResponseEntity.ok("{\"account\": {\"active-card\": " + accountDefault.isActiveCard() + ", \"available-active\": " + accountDefault.getAvailableLimit() + "}, \"violations\": [" + accountDefault.getViolations() + "]}");
+        CreditCard activeCard =  cardService.saveCard(card);
+
+        return ResponseEntity.ok("{\"account\": {\"active-card\": " +  activeCard.isActiveCard()+ ", \"available-active\": " + activeCard.getAvailableLimit() + "}, \"violations\": [" + accountDefault.getViolations() + "]}");
     }
 
 }

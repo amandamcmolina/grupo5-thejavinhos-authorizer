@@ -16,14 +16,14 @@ public class AccountService {
 
     public Account saveAccount(Account account) {
         List<Account> accounts = (List<Account>)accountRepository.findAll();
-        List<String> violations =  new ArrayList<>();
+
         if(accounts.size() >= 1 ){
-            violations.add("account-already-initialized");
-            account.setViolations((ArrayList<String>) violations);
+
+            account.setViolations("account-already-initialized");
             return account;
         }else{
-            violations.add("");
-            account.setViolations((ArrayList<String>) violations);
+
+            account.setViolations("");
             return accountRepository.save(account);
         }
     }

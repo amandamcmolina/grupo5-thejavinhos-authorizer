@@ -11,11 +11,9 @@ public class Account {
     @Id
     private int id;
 
-    @Column(name = "active_card")
-    private boolean activeCard = true;
+    @Column(name = "card")
+   private CreditCard card;
 
-    @Column(name = "available_limit")
-    private double availableLimit = 100;
 
 //    private String[] violations;
     private ArrayList violations = new ArrayList<>();
@@ -24,27 +22,19 @@ public class Account {
         return id;
     }
 
-    public boolean isActiveCard() {
-        return activeCard;
+    public CreditCard getCard() {
+        return card;
     }
 
-    public void setActiveCard(boolean activeCard) {
-        this.activeCard = activeCard;
-    }
-
-    public double getAvailableLimit() {
-        return availableLimit;
-    }
-
-    public void setAvailableLimit(double availableLimit) {
-        this.availableLimit = availableLimit;
+    public void setCard(CreditCard card) {
+        this.card = card;
     }
 
     public ArrayList<String> getViolations() {
         return violations;
     }
 
-    public void setViolations(ArrayList<String> violations) {
-        this.violations = violations;
+    public void setViolations(String violations) {
+        this.violations.add(violations);
     }
 }
